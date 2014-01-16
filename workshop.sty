@@ -1,0 +1,42 @@
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\definecolor{fore}{RGB}{7, 54, 66}
+\definecolor{half}{RGB}{88,110,117}
+\definecolor{back}{RGB}{253,246,227}
+\definecolor{title}{RGB}{0,43,54}
+
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{normal text}{fg=fore,bg=back}
+\setbeamercolor{bibliography entry author}{fg=fore,bg=back}
+\setbeamercolor{bibliography entry item}{fg=fore,bg=back}
+\setbeamertemplate{itemize item}{$\color{fore}\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{$\color{fore}\vartriangleright$}
+
+\usepackage{textcomp}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tcolorbox}
+
+\usepackage{listings,bera}
+\definecolor{keywords}{RGB}{38,139,210}
+\definecolor{comments}{RGB}{133,153,0}
+\definecolor{string}{RGB}{220,50,47}
+\lstset{language=Python,
+  basicstyle=\color{fore}\scriptsize,
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments},
+  stringstyle=\color{string},
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\color{half}\tiny,
+  texcl=true,
+  upquote=true}
+
+\graphicspath{{graphics/}}
+\usepackage{graphicx}
+\usepackage[official]{eurosym}
+\usepackage[overlay,absolute]{textpos}
+
