@@ -8,7 +8,7 @@
 
 \title{Syllabus: Introduction to Python}
 \author{Chang Y. Chung}
-\date{January 2014}
+\date{May 2014}
 
 \usepackage{booktabs}
 \usepackage{units}
@@ -46,13 +46,13 @@ ecosystem features an extensive set of tools including a JIT
 compiler\footnote{PyPy (\url{http://pypy.org})} and fancy
 IDE's\footnote{For instance, IPython (\url{http://ipython.org})}.
 
-In this half-day workshop, you will be introduced to basic Python
+In this workshop, you will be introduced to basic Python
 language syntax and to its ecosystem.
 
 \begin{marginfigure}%
   \includegraphics[width=0.4\linewidth]{ipython}
   \caption{IPython (\url{http://ipython.org}) is a rich architecture for
-    interactive computing. Version 1.0.0 was released on Aug, 2013.}
+    interactive computing. Version 2.0 was released on April, 2014.}
   \label{fig:IPython}
 \end{marginfigure} 
 
@@ -76,20 +76,22 @@ After taking this course, you should be able to:
   \item understand the difference between expressions and statements
   \item understand assignment semantics
   \item write and call a simple function % (lexical scoping rule?)
-  \item utilize high-level data types such as lists and dictionaries
-  \item understand the difference between mutable and immutable types
-  \item write a simple class and access methods and attributes
   \item import and utilize a module % (Beautiful Soup?)
   \item read from and write to a text file
-  \item understand interpreter and compilers: CPython, PyPy, Cython
-  \item see demonstration of IDE's: IDLE, IPython, IPython
-     Notebook, hosted environments
-  \item understand the role of package managers: easy\_install, pip
-  \item understand what NumPy does and what SciPy is (are?) 
+  \item utilize high level data structures: lists
+  \item create dictionaries and complex data structures
+  \item understand tuples and automatic unpacking
+  \item understand the difference between mutable and immutable types
+  \item write a simple class and access methods and attributes
+  \item learn about how to handle and to raise exceptions
+  % \item understand interpreter and compilers: CPython, PyPy, Cython
+  % \item see demonstration of IDE's: IDLE, IPython, IPython
+  %    Notebook, hosted environments
+  % \item understand the role of package managers: easy\_install, pip
+  % \item understand what NumPy does and what SciPy is (are?) 
   \item learn about resources for learning Python\footnote{tutorials,
         books, MOOC's, videos, web sites, Python Koans,
         Python Challenge, and Project Euler}
-
 \end{itemize}
 
 \section{Intended Audience}\label{sec:intended_audience}
@@ -99,19 +101,21 @@ lisp, bash, or PowerShell, etc.} but who do not know Python. It is
 assumed that you can edit a text file using your favorite editor, and be
 able to execute your script file on the command line of a shell.
 
-\section{Installation}\label{sec:installation}
-Python comes pre-installed in Mac OS X and Linux. Since Python 3 is not
-backward compatible and not all the modules are upgraded into Python 3,
-we will use the latest version of Python 2 (2.7 as of writing this), 
-which is the default for OS X and Linux.
+\section{Environment}\label{sec:environment}
+Python can be installed and used in different ways. In this workshop,
+I will use IPython Notebook environment for demonstration. All the
+lab PC's will have IPython Notebook installed.
 
-A nice instruction for installing Python on Windows is at The
-Hitchhiker's Guide to Python
-site\footnote{\url{http://docs.python-guide.org/en/latest/starting/install/win/}}.
+If you rather use other environments, then you are welcome to bring
+your own laptop computer. Free Anaconda 
+distribution\footnote{Available at: 
+\url{https://store.continuum.io/cshop/anaconda/}} is recomended, but
+other environments (for example, command line Python and emacs editor)
+are OK.
 
-Installation of pip is optional but encouraged, since pip is the tool for
-installing and managing Python packages. An installation guide is
-at \url{http://www.pip-installer.org/en/latest/installing.html}.
+Since Python 3 is not backward compatible and not all the modules are
+upgraded into Python 3, we will use Python 2 (2.7 as of writing this),
+which is the default for IPython notebook in the Anaconda distribution. 
 
 \begin{figure*}[ht]
   \includegraphics[width=0.8\linewidth]{matplotlib.png}%
@@ -123,11 +127,11 @@ at \url{http://www.pip-installer.org/en/latest/installing.html}.
 \end{figure*}
 
 \section{Location and Date}\label{sec:location_and_date}
-% OPR Computer Lab: \#217 Wallace Hall (or TBA)
-\noindent Location: \st{\#217 Wallace Hall}
-   Bowl 001 Robertson Hall (Lower Level)
+\noindent Location: OPR Computer Lab: \#217 Wallace Hall
 
-\noindent Date: Tue Jan. 14th, 2014  1:30 -- 4:30 pm
+\noindent Date: This workshop is offerred twice. Please signup for 
+one either on Thursday (Thu., May 8. 9:30 am - noon) or on Friday 
+(Fri., May 9. 9:30 am - noon).
 
 \section{Schedule}\label{sec:schedule}
 \begin{table}[ht]
@@ -136,15 +140,17 @@ at \url{http://www.pip-installer.org/en/latest/installing.html}.
     \toprule
     Section & Format & Topic \\
     \midrule
-    Basic Syntax & Lecture \& Quiz & Hello World to List \& Dict \\
-    Intermediate Syntax & Lecture \& Quiz & Mutable to File IO \\
-    Ecosystem & Demo \& QA & Compilers to Resources \\
+    Basic Syntax & Lecture \& Quiz & Hello World to File IO \\
+    Intermediate Syntax & Lecture \& Quiz & List to Exception \\
     (Optional) & Survey & Evaluation \\
+    (Self-study) & Ecosystem & Demo \& Resources \\
     \bottomrule
   \end{tabular}
-  \caption{Each of the three sections will last 50 minutes total with a
-    15-20 minute break in between the sections. At the end of each
-    section, a homework or in-depth lab material will be provided.}
+  \caption{Schedule. 
+    We will spend most of the time going through the first two
+    sections. For the third section (ecosystem and demonstration),
+    a deck of slides (PDF format) and an IPython Notebook (for
+    demonstration) will be provided for self-study after the workshop.}
   \label{tab:Schedule}
 \end{table}
 
