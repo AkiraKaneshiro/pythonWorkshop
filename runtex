@@ -2,5 +2,5 @@ pdflatex $1
 bibtex $1
 pdflatex $1
 pdflatex $1
-open $1.pdf &
+# open $1.pdf &
 
