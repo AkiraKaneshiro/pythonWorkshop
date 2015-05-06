@@ -22,13 +22,13 @@
 \item<1-> Niklaus Wirth (1976)\cite{Wirth1976}
 \item<2-> Python's built-in data structures include:
 \begin{itemize}
-  \item Lists
-  \item Dictionaries
-  \item Tuples
+  \item List
+  \item Dictionary
+  \item Tuple
 \end{itemize}
 \item<3-> We will also briefly talk about:
 \begin{itemize}
-  \item Classes
+  \item Class
   \item Exception Handling
 \end{itemize}
 \end{itemize}
@@ -169,18 +169,18 @@ len([0,1,2,]) == 3
     (Hint: Create a new empty list. Loop over the
      old one appending only odd numbers into the new one.
      Return the new one.)
-\item<2-> An answer.
-\begin{lstlisting}
-def only_odd(a_list):
-    L = []
-    for el in a_list:
-        if el % 2 == 1:
-            L.append(el)
-    return L
-
-print only_odd([0, 1, 2, 3, 4])
-# [1, 3]
-\end{lstlisting}
+% \item<2-> An answer.
+% \begin{lstlisting}
+% def only_odd(a_list):
+%     L = []
+%     for el in a_list:
+%         if el % 2 == 1:
+%             L.append(el)
+%     return L
+% 
+% print only_odd([0, 1, 2, 3, 4])
+% # [1, 3]
+% \end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -253,15 +253,15 @@ L = [[1, 2], [0, 2, 3], [0, 1], [1, 4, 5], [3, 5], [3]]
       Calculate the average number of friends
       the children have. (Hint: \lstinline{len()}
       returns the list size.)
-\item<2-> An answer:
-\begin{lstlisting}
-total = 0.0            # make total a float type
-for el in L:
-    total += len(el)
-avg = total / len(L)
-print avg
-# 2.1666
-\end{lstlisting}
+% \item<2-> An answer:
+% \begin{lstlisting}
+% total = 0.0            # make total a float type
+% for el in L:
+%     total += len(el)
+% avg = total / len(L)
+% print avg
+% # 2.1666
+% \end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -432,22 +432,20 @@ print mary1["cr"]                  # 800
 \begin{itemize}
 \item<1-> Make a dictionary of 2012
       SAT percentile ranks for the scores
-      from 660 to 700 and for all three subsections.
+      from 680 to 700 and for all three subsections.
       The full table is available at 
       \url{http://tinyurl.com/k38xve8}.
       Given this dictionary, say \lstinline{D},
-      a lookup, \lstinline{D[660]["cr"]}
-      should be evaluated to \lstinline{91}.
-\item<2-> An answer.
-\begin{lstlisting}
-D = {700: {"cr": 95, "m": 93, "w": 96},
-     690: {"cr": 94, "m": 92, "w": 95},
-     680: {"cr": 93, "m": 90, "w": 94}, 
-     670: {"cr": 92, "m": 89, "w": 93},
-     660: {"cr": 91, "m": 87, "w": 92}}
-
-print D[660]["cr"]      # 91
-\end{lstlisting}
+      a lookup, \lstinline{D[680]["cr"]}
+      should be evaluated to \lstinline{93}.
+% \item<2-> An answer.
+% \begin{lstlisting}
+% D = {700: {"cr": 95, "m": 93, "w": 96},
+%      690: {"cr": 94, "m": 92, "w": 95},
+%      680: {"cr": 93, "m": 90, "w": 94}} 
+% 
+% print D[680]["cr"]      # 93
+% \end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -458,8 +456,8 @@ print D[660]["cr"]      # 91
 \item (tricky) Write a new dictionary \lstinline{DD} such that
      we look up the subsection first and then
      the score. That is,
-     \lstinline{DD["cr"][660]} should be
-     evaluated to \lstinline{91}.
+     \lstinline{DD["cr"][680]} should be
+     evaluated to \lstinline{93}.
  
      (Hint: Start with a dictionary below.):
 \begin{lstlisting}
@@ -725,131 +723,131 @@ for url in L:
 \end{itemize}
 \end{frame}
 
-% -----------------------------------------------
-\begin{frame}[fragile]
-\frametitle{A Data Structure Usage Example}
-\begin{itemize}
-\item STAN (\url{http://mc-stan.org}) is  
-      a C++ library / language implementing
-      Markov chain Monte Carlo sampling (NUTS, HMC).
-\item STAN provides
-      three application programming interfaces 
-      (or API's): R, Python, and shell
-\item This is an example of using the Python API,
-      which is provided in a Python module, PyStan\cite{STANSite}.
-\item In order to run this, you need to install: 
-      Cython (\url{http://cython.org}), NumPy 
-      (\url{http://www.numpy.org}), and STAN itself.
-\item From PyStan doc (\url{http://tinyurl.com/olap8sx}),
-      fitting the eight school model in Gelman et al.
-      \cite[sec 5.5]{GelmanEtAl2003}.
-\end{itemize}
-\end{frame}
-
-% -----------------------------------------------
-\begin{frame}[fragile]
-\frametitle{Data Structure Usage Example (cont.)}
-\begin{itemize}
-\item Import PyStan module and put STAN code
-      in a string.
-\begin{lstlisting}[escapechar=\%]
-import pystan
-schools_code = """
-data {
-    int<lower=0> J; // number of schools
-    real y[J]; // estimated treatment effects
-    real<lower=0> sigma[J]; // s.e. of effect estimates
-}
-parameters {
-    real mu;
-    real<lower=0> tau;
-    real eta[J];
-}
-transformed parameters {
-    real theta[J];
-    for (j in 1:J)
-        theta[j] <%{\color{red}\--}% mu + tau * eta[j];
-}
-model {
-    eta ~ normal(0, 1);
-    y ~ normal(theta, sigma);
-}
-"""
-\end{lstlisting}
-\end{itemize}
-\end{frame}
-
-% -----------------------------------------------
-\begin{frame}[fragile]
-\frametitle{Data Structure Usage Example (cont.)}
-\begin{itemize}
-\item cont.
-\begin{lstlisting}[escapechar=\%]
-schools_data = {"J": 8,
-                "y": [28,  8, %{\color{black}\--}%3,  7, %{\color{black}\--}%1,  1, 18, 12],
-                "sigma": [15, 10, 16, 11,  9, 11, 10, 18]}
-
-fit = pystan.stan(model_code=schools_code, 
-                  data=schools_data, %{\color{black}iter}%=1000, chains=4)
-
-la = fit.extract(permuted=True)
-mu = la["mu"] 
-# do something with mu here
-
-print str(fit)    # (nicely) print fit object
-fit.plot()        # requires matplotlib
-\end{lstlisting}
-\item Notice that:
-\begin{itemize}
-\item Input data are supplied in a dictionary. 
-\item \lstinline{stan()} function in the module runs
-      the model.
-\item The function returns a \lstinline{fit} type object, which
-      has several methods including \lstinline{extract()}
-      and \lstinline{plot()}.
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-% -----------------------------------------------
-\begin{frame}[fragile]
-\frametitle{Data Structure Usage Example (cont.)}
-\begin{itemize}
-\item Output, in part
-\begin{lstlisting}[escapechar=\#]
-INFO:pystan:COMPILING THE C++ CODE FOR MODEL anon_model NOW.
-Inference #{\color{fg}for}# Stan model: anon_model.
-4 chains, each with #{\color{fg}iter}#=1000; warmup=500; thin=1; 
-post-warmup draws per chain=500, total post-warmup draws=2...
-
-         mean se_mean   sd 2.5%  25%  50%  75% 97.5% n_eff...
-mu        7.8     0.2  5.1 -2.0  4.4  7.9 11.3  17.2 515.0...
-tau       6.4     0.3  5.4  0.4  2.6  5.1  8.6  20.5 362.0 
-eta[0]    0.4     0.0  0.9 -1.5 -0.2  0.4  1.0   2.2 597.0 
-eta[1]   -0.0     0.0  0.9 -1.8 -0.6 -0.0  0.5   1.7 582.0 
-...
-theta[6] 10.4     0.3  6.9 -1.9  5.7  9.8 14.3  25.8 594.0 
-theta[7]  8.3     0.3  7.5 -6.2  3.7  8.0 12.7  25.0 604.0 
-lp__     -4.9     0.1  2.6-10.5 -6.5 -4.7 -3.2  -0.3 318.0 
-
-Samples were drawn using NUTS(diag_e) at Thu Jan  9 17:53:
-For each parameter, n_eff #{\color{fg}is}# a crude measure of effective 
-#{\color{fg}and}# Rhat #{\color{fg}is}# the potential scale reduction factor on split 
-convergence, Rhat=1).
-\end{lstlisting}
-\end{itemize}
-\end{frame}
-
-% -----------------------------------------------
-\begin{frame}[fragile]
-\frametitle{Data Structure Usage Example (cont.)}
-\begin{itemize}
-\item Plots
-\begin{figure}[h]
-  \includegraphics[width=8cm]{stan.png}
-\end{figure}
-\end{itemize}
-\end{frame}
+% % -----------------------------------------------
+% \begin{frame}[fragile]
+% \frametitle{A Data Structure Usage Example}
+% \begin{itemize}
+% \item STAN (\url{http://mc-stan.org}) is  
+%       a C++ library / language implementing
+%       Markov chain Monte Carlo sampling (NUTS, HMC).
+% \item STAN provides
+%       three application programming interfaces 
+%       (or API's): R, Python, and shell
+% \item This is an example of using the Python API,
+%       which is provided in a Python module, PyStan\cite{STANSite}.
+% \item In order to run this, you need to install: 
+%       Cython (\url{http://cython.org}), NumPy 
+%       (\url{http://www.numpy.org}), and STAN itself.
+% \item From PyStan doc (\url{http://tinyurl.com/olap8sx}),
+%       fitting the eight school model in Gelman et al.
+%       \cite[sec 5.5]{GelmanEtAl2003}.
+% \end{itemize}
+% \end{frame}
+% 
+% % -----------------------------------------------
+% \begin{frame}[fragile]
+% \frametitle{Data Structure Usage Example (cont.)}
+% \begin{itemize}
+% \item Import PyStan module and put STAN code
+%       in a string.
+% \begin{lstlisting}[escapechar=\%]
+% import pystan
+% schools_code = """
+% data {
+%     int<lower=0> J; // number of schools
+%     real y[J]; // estimated treatment effects
+%     real<lower=0> sigma[J]; // s.e. of effect estimates
+% }
+% parameters {
+%     real mu;
+%     real<lower=0> tau;
+%     real eta[J];
+% }
+% transformed parameters {
+%     real theta[J];
+%     for (j in 1:J)
+%         theta[j] <%{\color{red}\--}% mu + tau * eta[j];
+% }
+% model {
+%     eta ~ normal(0, 1);
+%     y ~ normal(theta, sigma);
+% }
+% """
+% \end{lstlisting}
+% \end{itemize}
+% \end{frame}
+% 
+% % -----------------------------------------------
+% \begin{frame}[fragile]
+% \frametitle{Data Structure Usage Example (cont.)}
+% \begin{itemize}
+% \item cont.
+% \begin{lstlisting}[escapechar=\%]
+% schools_data = {"J": 8,
+%                 "y": [28,  8, %{\color{black}\--}%3,  7, %{\color{black}\--}%1,  1, 18, 12],
+%                 "sigma": [15, 10, 16, 11,  9, 11, 10, 18]}
+% 
+% fit = pystan.stan(model_code=schools_code, 
+%                   data=schools_data, %{\color{black}iter}%=1000, chains=4)
+% 
+% la = fit.extract(permuted=True)
+% mu = la["mu"] 
+% # do something with mu here
+% 
+% print str(fit)    # (nicely) print fit object
+% fit.plot()        # requires matplotlib
+% \end{lstlisting}
+% \item Notice that:
+% \begin{itemize}
+% \item Input data are supplied in a dictionary. 
+% \item \lstinline{stan()} function in the module runs
+%       the model.
+% \item The function returns a \lstinline{fit} type object, which
+%       has several methods including \lstinline{extract()}
+%       and \lstinline{plot()}.
+% \end{itemize}
+% \end{itemize}
+% \end{frame}
+% 
+% % -----------------------------------------------
+% \begin{frame}[fragile]
+% \frametitle{Data Structure Usage Example (cont.)}
+% \begin{itemize}
+% \item Output, in part
+% \begin{lstlisting}[escapechar=\#]
+% INFO:pystan:COMPILING THE C++ CODE FOR MODEL anon_model NOW.
+% Inference #{\color{fg}for}# Stan model: anon_model.
+% 4 chains, each with #{\color{fg}iter}#=1000; warmup=500; thin=1; 
+% post-warmup draws per chain=500, total post-warmup draws=2...
+% 
+%          mean se_mean   sd 2.5%  25%  50%  75% 97.5% n_eff...
+% mu        7.8     0.2  5.1 -2.0  4.4  7.9 11.3  17.2 515.0...
+% tau       6.4     0.3  5.4  0.4  2.6  5.1  8.6  20.5 362.0 
+% eta[0]    0.4     0.0  0.9 -1.5 -0.2  0.4  1.0   2.2 597.0 
+% eta[1]   -0.0     0.0  0.9 -1.8 -0.6 -0.0  0.5   1.7 582.0 
+% ...
+% theta[6] 10.4     0.3  6.9 -1.9  5.7  9.8 14.3  25.8 594.0 
+% theta[7]  8.3     0.3  7.5 -6.2  3.7  8.0 12.7  25.0 604.0 
+% lp__     -4.9     0.1  2.6-10.5 -6.5 -4.7 -3.2  -0.3 318.0 
+% 
+% Samples were drawn using NUTS(diag_e) at Thu Jan  9 17:53:
+% For each parameter, n_eff #{\color{fg}is}# a crude measure of effective 
+% #{\color{fg}and}# Rhat #{\color{fg}is}# the potential scale reduction factor on split 
+% convergence, Rhat=1).
+% \end{lstlisting}
+% \end{itemize}
+% \end{frame}
+% 
+% % -----------------------------------------------
+% \begin{frame}[fragile]
+% \frametitle{Data Structure Usage Example (cont.)}
+% \begin{itemize}
+% \item Plots
+% \begin{figure}[h]
+%   \includegraphics[width=8cm]{stan.png}
+% \end{figure}
+% \end{itemize}
+% \end{frame}
 
 % -----------------------------------------------
 \begin{frame}[fragile]

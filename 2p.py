@@ -1,13 +1,13 @@
 
 # coding: utf-8
 
-## Introduction to Python 2
+# # Introduction to Python 2
 
-# May, 2014
+# May, 2015
 # 
 # Chang Y. Chung
 
-### Algorithms + Data Structures = Programs
+# ## Algorithms + Data Structures = Programs
 
 # Niklaus Wirth (1976)<cite data-cite="Wirth1976">[3]</cite>
 # 
@@ -15,21 +15,21 @@
 
 # Python's built-in data structures include:
 # 
-# * Lists
-# * Dictionaries
-# * Tuples
+# * List
+# * Dictionary
+# * Tuple
 #   
 # We will also briefly talk about:
 # 
-# * Classes
+# * Class
 # * Exception Handling
 
-### List
+# ## List
 
 # * Ordered (indexed) collection of arbitrary objects.
 # * Mutable -- may be changed in place.
 
-# * Ordered collection of arbitrary objects.
+# Ordered collection of arbitrary objects.
 
 # In[ ]:
 
@@ -110,7 +110,8 @@ print sq, sum(sq)
 L = [1, 2, 3, 4]
 M = L       # aliasing
 L[0] = 87
-print M
+
+print "M=", M
 
 
 # In[ ]:
@@ -121,14 +122,14 @@ L[0] = 87
 print M
 
 
-### Quiz
+# ## Quiz
 
 # In[ ]:
 
 L = [1, 2, [3, 4], 5, "xyz"]
 
 
-# Evalute the following expressions:
+# Run the above cell and create L (Select the cell and Shift+Enter). And then evalute the following expressions.
 
 # In[ ]:
 
@@ -155,7 +156,7 @@ L[2] == 3, 4
 L.index("xyz") == 4
 
 
-### Quiz (Cont.)
+# ## Quiz (Cont.)
 
 # In[ ]:
 
@@ -189,68 +190,34 @@ L[9] == None
 len([0,1,2,]) == 3
 
 
-### Quiz
+# ## Quiz
 
 # Write a function that, given a list of integers, returns a _new_ list of odd numbers only. For instance, given the list, [0, 1, 2, 3, 4], this function should return a new list, [1, 3]. (Hint: Create a new empty list. Loop over the old one appending only odd numbers into the new one. Return the new one.)
 
 # In[ ]:
 
-def only_odd(a_list):
-    L = []
-    for el in a_list:
-        if el % 2 == 1:
-            L.append(el)
-    return L
-
-# check
-print only_odd([0, 1, 2, 3, 4])
 
 
-### Quiz
 
-# (tricky) Write a function similar to the previous one. This time, however, do not return a new list. Just modify the given list so that it has only the odd numbers. (Hint: del L[0] removes the first element of the list, L)
+# ## Quiz
+
+# (tricky) Write a function similar to the previous one. This time, however, do not return a new list. Just modify the given list so that it has only the odd numbers. (Hint: `del L[0]` removes the first element of the list, `L`)
 
 # Here is an answer.
 
 # In[ ]:
 
-def only_odd2(a_list):
-    L = []               
-    
-    while len(a_list) > 0:
-        el = a_list[0]     
-        if el % 2 == 1:   
-            L.append(el)
-        del a_list[0]    
-        
-    a_list.extend(L) 
-    
-# check
-L = [0, 1, 2, 3, 4]
-only_odd2(L)
-print L
+
 
 
 # Here is another answer. Looping last-to-first element -- this way, we preserve the indices as they are, even we remove some elements.
 
 # In[ ]:
 
-def only_odd3(a_list):
-    length = len(a_list)
-    i = 1
-    while i <= length:
-        j = length - i
-        if a_list[j] % 2 == 0:
-            del a_list[j]
-        i += 1
-
-# check
-L = [0, 1, 2, 3, 4]
-only_odd3(L)
-print L
 
 
-# In practive, I'd just create a new list with a comprehension.
+
+# In practice, I'd just create a new list with a comprehension.
 
 # In[ ]:
 
@@ -260,11 +227,11 @@ M = [x for x in L if x % 2 == 1]
 print M
 
 
-### Slice Index
+# ## Slice Index
 
 # * Applies to any sequence types, including list, str, tuple, ...
 # 
-# * Has three (optional) parts separated by a colon (:), start : end : step, indicating start through but not past end, by step; Indices point in-between the elements.
+# * Has three (optional) parts separated by a colon (:), `start:end:step`, indicating `start` through but not past `end`, by `step`; Indices point in-between the elements.
 
 # <pre>
 #    +−−−+−−−+−−−+−−−+−−−+−−−+ 
@@ -303,11 +270,6 @@ print L[-1] # the last element
 
 # In[ ]:
 
-L = ['p', 'y', 't', 'h', 'o', 'n']
-
-
-# In[ ]:
-
 print L[:]  # a (shallow) copy
 
 
@@ -326,7 +288,7 @@ print L[-2:] # last two
 print L[::-1] # reversed
 
 
-### Quiz
+# ## Quiz
 
 # Suppose that you collect friendship network data among six children, each of whom we identify with a number: 0, 1, ..., 5. The data are represented as a list of lists, where each element list represents the element child's friends.
 
@@ -348,17 +310,7 @@ L[0] == [1, 2]
 
 # In[ ]:
 
-# data again
-L = [[1, 2], [0, 2, 3], [0, 1], [1, 4, 5], [3, 5], [3]]
 
-total = 0.0 
-for el in L:
-    total += len(el)
-    
-avg = total / len(L)
-
-# check
-print avg
 
 
 # With a list comprehension, this can be as simple as:
@@ -368,7 +320,7 @@ print avg
 print 1.0 * sum([len(x) for x in L]) / len(L)
 
 
-### Quiz (cont.)
+# ## Quiz (cont.)
 
 # Write a function to check if _all_ the friendship choices are reciprocated. It should take a list like previous one and return either True or False. (Hint: You may want to use a utility function below.)
 
@@ -381,12 +333,7 @@ def mutual(a_list, ego, alter):
 # In[ ]:
 
 def all_reciprocated(a_list):
-    for ego in range(len(L)):
-        alters = L[ego]
-        for alter in alters:
-            if not mutual(a_list, ego, alter):
-                return False
-    return True
+# do your coding here
 
 # check
 L = [[1, 2], [0, 2, 3], [0, 1], [1, 4, 5], [3, 5], [3]]
@@ -400,7 +347,7 @@ L = [[1, 2], [0, 2, 3], [0, 1], [1, 4, 5], [3, 5], [3, 4]]
 print all_reciprocated(L)
 
 
-### List Comprehension
+# ## List Comprehension
 
 # A concise way to create a list. An example:
 
@@ -430,12 +377,12 @@ print L
 
 # In[ ]:
 
-[abs(x) for x in [-2,-1,0,1]]
+[abs(x) for x in [-2, -1, 0, 1]]
 
 
 # In[ ]:
 
-[x for x in range(6) if x==x**2]
+[x for x in range(6) if x == x ** 2]
 
 
 # In[ ]:
@@ -448,7 +395,7 @@ print L
 [x - y for x in range(2) for y in [7, 8]]
 
 
-### Dictionary
+# ## Dictionary
 
 # * A collection of key-value pairs.
 # * Indexed by keys.
@@ -460,7 +407,7 @@ print L
 
 # In[ ]:
 
-D = {} # an empty dict
+D = {}     # an empty dict
 D = dict() # also works
 
 D["one"]=1
@@ -503,7 +450,7 @@ for key in D.keys():
 
 # In[ ]:
 
-D = {[1,2]: 23}
+D = {[1, 2]: 23}
 
 
 # * Values can be almost of any type.
@@ -515,7 +462,7 @@ print D[2]
 print D[200]
 
 
-### Data Structure
+# ## Data Structure
 
 # SAT has three subsections: Critical Reading, Mathematics, and Writing. A result of taking an SAT exam is three scores.
 
@@ -551,7 +498,7 @@ print SAT[0]
 print SAT[0]["cr"]
 
 
-### More Complicated Data Structure
+# ## More Complicated Data Structure
 
 # In[ ]:
 
@@ -607,45 +554,33 @@ mary1 = SAT["Mary"]["test"][1]
 print mary1["cr"]
 
 
-### Quiz
+# ## Quiz
 
-# * Make a dictionary of 2012 SAT percentile ranks for the scores from 660 to 700 and for all three subsections. The full table is available at [http://tinyurl.com/k38xve8](http://tinyurl.com/k38xve8).
+# * Make a dictionary of 2012 SAT percentile ranks for the scores from 680 to 700 and for all three subsections. The full table is available at [http://tinyurl.com/k38xve8](http://tinyurl.com/k38xve8).
 # 
-# * Given this dictionary, say D, a lookup, D[660]["cr"] should be evaluated to 91.
+# * Given this dictionary, say D, a lookup, D[680]["cr"] should be evaluated to 93.
 
 # In[ ]:
 
-D = {700: {"cr": 95, "m": 93, "w": 96}, 
-     690: {"cr": 94, "m": 92, "w": 95}, 
-     680: {"cr": 93, "m": 90, "w": 94}, 
-     670: {"cr": 92, "m": 89, "w": 93}, 
-     660: {"cr": 91, "m": 87, "w": 92}}
+D = {}
 
 # check
-print D[660]["cr"]
+print D[680]["cr"]
 
 
-### Quiz (cont.)
+# ## Quiz (cont.)
 
-# Write a new dictionary DD such that we look up the subsection first and then the score. That is, DD["cr"][660] should be evaluated to 91. (Hint: Start with a dictionary below.)
+# Write a new dictionary DD such that we look up the subsection first and then the score. That is, DD["cr"][680] should be evaluated to 93. (Hint: Start with a dictionary below.)
 
 # In[ ]:
 
 DD = {"cr": {}, "m": {}, "w": {}}
 
-
-# In[ ]:
-
-for score in D:
-    subjects = D[score]
-    for subject in subjects: 
-        DD[subject][score] = subjects[subject]
-
 # check        
-print DD["cr"][660]    
+print DD["cr"][680]    
 
 
-### Tuples
+# ## Tuples
 
 # * A sequence of values separated by commas.
 # * Immutable.
@@ -686,7 +621,7 @@ print a, b
 # In[ ]:
 
 D = {"x": 23, "y": 46}
-D.items() # returns a list
+D.items() # returns a list of tuples
 
 
 # In[ ]:
@@ -695,7 +630,7 @@ for k, v in D.items():
     print "%s ==> %d" % (k, v)
 
 
-### Class
+# ## Class
 
 # * Class defines a (user-defined) type, a grouping of some data (properties) and functions that work on the data (methods).
 # 
@@ -703,12 +638,12 @@ for k, v in D.items():
 
 # Examples:
 
-#   - int is a type; 23 is an object.
-#   - str a type; "abc" an object.
-#   - "word document file" a type; "my_diary.docx" is an object.
+#   - `int` is a type; `23` is an object.
+#   - `str` a type; `"abc"` an object.
+#   - `word document file` a type; `my_diary.docx` is an object.
 #   - We have been using objects.
 
-### Examples of Built-in Types
+# ## Examples of Built-in Types
 
 # `str` type has a bunch of methods.
 
@@ -752,7 +687,7 @@ print dir(my_file)
 my_file.write("something")
 
 
-### Class
+# ## Class
 
 # In[ ]:
 
@@ -783,7 +718,7 @@ your_account.deposit(10)
 print your_account.balance
 
 
-### Quiz
+# ## Quiz
 
 # Implement a Person type (or class) which has three properties (first_name, last_name, and birth_year); and two methods: full_name() and age(). The age() method should take the current year as an argument. You may use the template below.
 
@@ -801,24 +736,6 @@ class Person:
         pass
 
 
-# An answer.
-
-# In[ ]:
-
-class Person:
-    
-    def __init__(self, first_name, last_name, birth_year):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.birth_year = birth_year
-        
-    def full_name(self):
-        return self.first_name + " " + self.last_name
-    
-    def age(self, current_year):
-        return current_year - self.birth_year
-
-
 # In[ ]:
 
 mr_park = Person("jae-sang", "Park", 1977)
@@ -827,10 +744,10 @@ print mr_park.full_name()
 
 # In[ ]:
 
-print mr_park.age(2014)
+print mr_park.age(2015)
 
 
-### Inheritance
+# ## Inheritance
 
 # * A subtype is more specialized basetype.
 
@@ -869,7 +786,7 @@ print psy.age(2012)
 # psy.show_off()
 
 
-### Exception Handling
+# ## Exception Handling
 
 # * An exception is raised when a (run-time) error occurs. By default, the script stops running immediately.
 
@@ -879,7 +796,7 @@ L = [0, 1, 2, 3]
 print L[5]
 
 
-# `try`: ... `except`: ... let us catch the exception and handle it.
+# `try`: ... `except`: ... let us catch the exception and handle it the way we want.
 
 # In[ ]:
 
@@ -894,7 +811,7 @@ except IndexError:
 print "next"
 
 
-### Throwing Exception
+# ## Throwing Exception
 
 # We can `raise` (or throw) an exception as well.
 
@@ -923,7 +840,7 @@ except IndexError:
 print "next"
 
 
-### Another Example
+# ## Another Example
 
 # `ulropen()` in `urllib2` module raises an exception when the web page is not found.
 
@@ -944,76 +861,7 @@ for url in L:
         print "failed to open: {0}".format(url)
 
 
-### A Data Structure Usage Example
-
-# * STAN ([http://mc-stan.org](http://mc-stan.org)) is a C++ library / language implementing Markov chain Monte Carlo sampling (NUTS, HMC).
-# 
-# * STAN provides three interfaces (or API's): R, Python, and shell
-# 
-# * This is an example of using the Python API, which is provided in a Python module, PyStan <cite cite-data="STANSite">[1]</cite>.
-# 
-# * In order to run this, you need to install: Cython ([http://cython.org](http://cython.org)), NumPy ([http://www.numpy.org](http://www.numpy.org)), and STAN itself.
-# 
-# * From PyStan doc ([http://tinyurl.com/olap8sx](http://tinyurl.com/olap8sx), fiting the eight school model in Gelman et al. <cite cite-data="GelmanEtAl2003">[2, sec 5.5]</cite>
-
-### Data Structure Usage Example (cont.)
-
-# Import PyStan module and put STAN code in a string.
-
-# In[ ]:
-
-import pystan
-import matplotlib
-
-schools_code = """
-data {
-    int<lower=0> J; // number of schools
-    real y[J]; // estimated treatment effects
-    real<lower=0> sigma[J]; // s.e. of effect estimates
-}
-parameters {
-    real mu;
-    real<lower=0> tau;
-    real eta[J];
-}
-transformed parameters {
-    real theta[J];
-    for (j in 1:J)
-    theta[j] <- mu + tau * eta[j];
-}
-model {
-    eta ~ normal(0, 1);
-    y ~ normal(theta, sigma);
-}
-"""
-
-
-### Data Structure Usage Example (cont.)
-
-# In[ ]:
-
-schools_dat = {
-    'J': 8,
-    'y': [28,  8, -3,  7, -1,  1, 18, 12],
-    'sigma': [15, 10, 16, 11,  9, 11, 10, 18]}
-
-fit = pystan.stan(
-    model_code=schools_code, 
-    data=schools_dat, iter=1000, chains=4)
-
-la = fit.extract(permuted=True)
-mu = la['mu']
-
-print str(fit)
-get_ipython().magic(u'matplotlib inline')
-fit.plot()
-
-
-# * Input data are supplied in a dictionary
-# * stan() function in the module runs the model.
-# * The function returns a fit type object, which has several methods including extract() and plot().
-
-### Summary
+# ## Summary
 
 # List -- An ordered collection of objects. Mutable.
 # 
@@ -1025,7 +873,7 @@ fit.plot()
 # 
 # `try`: ... `except`: ...  -- Catch and handle exceptions.
 
-### References
+# ## References
 
 # * Stan project team site. http://mc-stan.org/team.html.
 # * Andrew Gelman, John B. Carlin, H. S. S. D. B. R. Bayesian Data Analysis, 2nd ed. Chapman & Hall/CRC Texts in Statistical Science. Chapman and Hall/CRC, July 2003.

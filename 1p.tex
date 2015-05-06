@@ -252,6 +252,28 @@ print 10.0 / 3.0
 
 % -----------------------------------------------
 \begin{frame}[fragile]
+\frametitle{Quiz}
+\begin{itemize}
+\item What is the remainder of 5 divided by 2?
+%ANS% \item An answer:
+%ANS% \begin{lstlisting}[escapechar=\%]
+%ANS% dividend = 5
+%ANS% divisor = 2
+%ANS%
+%ANS% quotient = dividend // divisor
+%ANS% remainder = dividend - (quotient * divisor)
+%ANS% print remainder
+%ANS% \end{lstlisting}
+\item What is the remainder of 2837465 divided by 2834?
+%ANS% \item An answer using the modulus operator (\%):
+%ANS% \begin{lstlisting}[escapechar=\%]
+%ANS% print (2837465 % 2834)
+%ANS% \end{lstlisting}
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------
+\begin{frame}[fragile]
 \frametitle{String Literals}
 \begin{itemize}
 \item A string is a sequence of characters.
@@ -362,6 +384,33 @@ print "The answer is %d" % 21
 print "The real answer is %6.4f" % 21.2345678
 # The answer is 21.2346
 \end{lstlisting}
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Quiz}
+\begin{itemize}
+\item Say hello to Simba and friends. Use print statement(s).
+    The output should look like below. (Hint: Use
+    \{0:s\} or \%s for the place holder.)
+\begin{lstlisting}
+Hello, Simba!
+Hello, Timon!
+Hello, Pumbaa!
+\end{lstlisting}
+%ANS% \item An answer using the \lstinline{format()} method:
+%ANS% \begin{lstlisting}[escapechar=\%]
+%ANS% print "Hello, {0:s}!".format("Simba")
+%ANS% print "Hello, {0:s}!".format("Timon")
+%ANS% print "Hello, {0:s}!".format("Pumbaa")
+%ANS% \end{lstlisting}
+%ANS% \item An answer using the format operator (\%):
+%ANS% \begin{lstlisting}[escapechar=\%]
+%ANS% print "Hello, %s!" % ("Simba")
+%ANS% print "Hello, %s!" % ("Timon")
+%ANS% print "Hello, %s!" % ("Pumbaa")
+%ANS% \end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -579,14 +628,16 @@ February 1900, \ldots, 13 in January 1901, etc.
 The CMC in February 2011 is 1333.
 \\~\\
 What is the CMC for this month, i.e., January, 2014?
-\item<2-> An answer:
-\begin{lstlisting}[escapechar=\%]
-year = 2014
-month = 1
-print "CMC", (year %\--% 1900) * 12 + month
-# CMC 1369
-\end{lstlisting}
+%ANS% \item<2-> An answer:
+%ANS% \begin{lstlisting}[escapechar=\%]
+%ANS% year = 2014
+%ANS% month = 1
+%ANS% print "CMC", (year %\--% 1900) * 12 + month
+%ANS% # CMC 1369
+%ANS% \end{lstlisting}
 \item<3-> What is the month (and year) of CMC 1000? 
+%ANS% cmc = 1000
+%ANS% print (1900 + cmc // 12), (cmc % 12)
 \end{itemize}
 \end{frame}
 
@@ -595,8 +646,8 @@ print "CMC", (year %\--% 1900) * 12 + month
 \frametitle{Quiz}
 \begin{itemize}
 \item According to U.S. National Debt Clock,
-      the current outstanding public debt, as of 
-      a day last month, was a big number:
+      the outstanding public debt, as of 
+      a day in 2012, was a big number:
 \begin{lstlisting}
 debt = 17234623718339.96
 \end{lstlisting}
@@ -606,16 +657,21 @@ debt = 17234623718339.96
       (Hint: create a string variable and use
        the \lstinline{count()} method of
        the string type.)  
-\item<2-> An answer:
-\begin{lstlisting}
-sdebt = "17234623718339.96"
-print sdebt.count("3")
-# 4
-\end{lstlisting}
+%ANS% \item<2-> An answer:
+%ANS% \begin{lstlisting}
+%ANS% sdebt = "17234623718339.96"
+%ANS% print sdebt.count("3")
+%ANS% # 4
+%ANS% \end{lstlisting}
 \item<3-> (tricky) It feels rather silly to rewrite the
           value as a string.
           Can you think of a way to \emph{convert}
           the number into a string? 
+%ANS% \item<3-> An answer:
+%ANS% \begin{lstlisting}
+%ANS% print "{0:17.2f}".format(debt).count("3")
+%ANS% # 4
+%ANS% \end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -710,6 +766,38 @@ else:                            # OK
 
 % -----------------------------------------------
 \begin{frame}[fragile]
+\frametitle{Quiz}
+\begin{itemize}
+\item Given an integer n, print out "Even" if n is an
+    even number or "Odd" if n is an odd number. (Hint:
+    (n \% 2 == 0) is true when n is an even number.
+%ANS% \item An answer:
+%ANS% \begin{lstlisting}[escapechar=\%]
+%ANS% n = 3
+%ANS% if (n %% 2 == 0):
+%ANS%     print "Even"
+%ANS% else:
+%ANS%     print "Odd"
+%ANS% \end{lstlisting}
+\item Given an integer n, print out "Even" if n is an
+    even number except zero or "Odd" if n is an odd number.
+    When n is equal to zero (0), then print out "Even and zero",
+    instead of just "Even".
+%Ans% \item An answer:
+%ANS% \begin[lstlisting}[escapechar=\%]
+%ANS% n = 3
+%ANS% if (n % 2 == 0 and n == 0):
+%ANS%     print "Even and zero"
+%ANS% elif (n % 2 == 0 and n != 0):
+%ANS%     print "Even"
+%ANS% else:
+%ANS%     print "Odd"
+%ANS% \end{lstlisting}
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------
+\begin{frame}[fragile]
 \frametitle{WHILE}
 \begin{itemize}
 \item Repeats a block of statements
@@ -783,6 +871,40 @@ for n in numbers:
 # 3 is odd
 # 4 is even      
 \end{lstlisting}
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Quiz}
+\begin{itemize}
+\item Write either a while or a for loop to add integers from 1 to
+    a given positive integer, n (n >= 1). For example, when n is 3,
+    your program should print out 6, when n is 10, 55.
+    (Hint: It is easy to get an infinite loop. If you don't see
+    output and kernel keeps running (indicated by the filled circle
+    under the Python logo on the top right corner of ipython notebook),
+    then interrupt the kernel by clicking on the ipython notebook
+    menu, Kernel > Interrupt, and fix the error.)
+%ANS% \item An answer:
+%ANS% \begin{lstlisting}[escapechar=\%]
+%ANS% n = 3
+%ANS% i = 1
+%ANS% total = 0
+%ANS% while (i <= n):
+%ANS%    total = total + i
+%ANS%    i = i + 1
+%ANS% print total
+%ANS% \end{lstlisting}
+\item You may have noticed that it is rather silly to use a loop
+    to calculate this sum. Calculate the sum of integers from 1
+    to n (n >= 1) directly without a loop. (Hint the sum is also
+    known as the "triangular number".)
+%Ans% \item An answer:
+%ANS% \begin[lstlisting}[escapechar=\%]
+%ANS% n = 3
+%ANS% print (n * (n + 1)) / 2
+%ANS% \end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -904,6 +1026,37 @@ print cmc(2014, 15)
 
 % -----------------------------------------------
 \begin{frame}[fragile]
+\frametitle{Quiz}
+\begin{itemize}
+\item Write a function odd(n) which returns true if given the
+    number is odd or false otherwise. (Hint: Recall the remainder
+    operator \%.)
+%ANS% \item An answer:
+%ANS% \begin{lstlisting}[escapechar=\%]
+%ANS% def odd(n):
+%ANS%    return (n % 2 == 0)
+%ANS% \end{lstlisting}
+\item Write a function, triangular(n), which returns the 
+    triangular number n, that is the sum of integers from
+    1 to the given number, n. For example, triangular(3)
+    should return 6 and triangular(10) should return 55.
+%Ans% \item An answer:
+%ANS% \begin[lstlisting}[escapechar=\%]
+%ANS% def triangular(n):
+%ANS%    return (n * (n + 1)) / 2
+%ANS% \end{lstlisting}
+\item Print out the first 20 odd triangular numbers.
+    (Hint: OEIS A014493)
+%Ans% \item An answer:
+%ANS% \begin[lstlisting}[escapechar=\%]
+%ANS% for i in range(1, 21):
+%ANS%    print triangular(i),
+%ANS% \end{lstlisting}
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------
+\begin{frame}[fragile]
 \frametitle{Local and Global Variables}
 \begin{itemize}
 \item Within your function:
@@ -947,11 +1100,11 @@ print x                  # 2
       For instance, if a person is 70kg and 1.80m,
       then BMI is about 21.6.)
 
-\item<2-> An answer.
-\begin{lstlisting}
-def bmi(kg, m):
-    return float(kg) / (m ** 2)
-\end{lstlisting}
+%ANS% \item<2-> An answer.
+%ANS% \begin{lstlisting}
+%ANS% def bmi(kg, m):
+%ANS%     return float(kg) / (m ** 2)
+%ANS% \end{lstlisting}
 \item<3-> Re-write
     the bmi function so that it accepts height in feet
     and inches, and the weight in pounds. (Hint. Make pound, foot,
