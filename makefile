@@ -12,8 +12,17 @@ syllabus.pdf: syllabus.tex
 %p.pdf: %p.tex
 	runtex $<
 
-%h.pdf: %h.tex
-	runtex $<
+0h.pdf: 0h.tex 0p.tex
+	runtex 0h.tex
+
+1h.pdf: 1h.tex 1p.tex
+	runtex 1h.tex
+
+2h.pdf: 2h.tex 2p.tex
+	runtex 2h.tex
+
+3h.pdf: 3h.tex 3p.tex
+	runtex 3h.tex
 
 re.pdf: re.html
 	wkhtmltopdf --page-size Letter $< $@

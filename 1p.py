@@ -11,16 +11,22 @@
 
 # * Print out a "Hello" in your environment.
 
-# In[ ]:
+# In[1]:
 
-
+# an answer
+print "Hello"
 
 
 # * Print out "Hello" 20 times.
 
-# In[ ]:
+# In[2]:
 
-
+# an answer
+for i in range(20):
+    print "Hello"
+    
+# another answer
+print "Hello " * 20
 
 
 # ## Why Python?
@@ -59,7 +65,7 @@
 
 # Just add the first line with a hashbang(#!):
 
-# In[ ]:
+# In[3]:
 
 #!/usr/bin/python
 
@@ -75,7 +81,7 @@ if __name__ == "__main__":
 
 # Comments start with a hash (#) and end with a newline.
 
-# In[ ]:
+# In[4]:
 
 
 # this whole line is a comment
@@ -93,7 +99,7 @@ print "total =", total
 
 # * Variables are created when first assigned a value.
 
-# In[ ]:
+# In[5]:
 
 my_var = 3
 answer_to_everything = 42
@@ -120,7 +126,7 @@ a, b, c = 1, 2, 3
 
 # In Python, an assignment creates an object, and labels it with the variable.
 
-# In[ ]:
+# In[6]:
 
 a = 1
 
@@ -129,7 +135,7 @@ a = 1
 
 # If you assign another value to a, then the variable labels the new value (2).
 
-# In[ ]:
+# In[7]:
 
 a = 2
 
@@ -139,7 +145,7 @@ a = 2
 
 # This is what happens if you assign a to a new variable b:
 
-# In[ ]:
+# In[8]:
 
 b = a
 
@@ -149,7 +155,7 @@ b = a
 
 # ## Integers
 
-# In[ ]:
+# In[9]:
 
 x = 0
 age = 20
@@ -158,7 +164,7 @@ size_of_household = 5
 print type(age)
 
 
-# In[ ]:
+# In[10]:
 
 # can handle arbitrarily large numbers
 huge = 10 ** 100 + 1
@@ -167,7 +173,7 @@ huge
 
 # ## Floating-point Numbers
 
-# In[ ]:
+# In[11]:
 
 g = 0.1
 f = 6.67384
@@ -175,27 +181,27 @@ f = 6.67384
 
 # It is the dot (.) that makes it a float.
 
-# In[ ]:
+# In[12]:
 
 velocity = 1.
 print velocity
 
 
-# In[ ]:
+# In[13]:
 
 type(velocity)
 
 
 # ## Most of the arithmetic operators behave as expected
 
-# In[ ]:
+# In[14]:
 
 a = 10
 b = 20
 print a - (b ** 2) + 23
 
 
-# In[ ]:
+# In[15]:
 
 x = 2.0
 print x / 0.1
@@ -203,19 +209,19 @@ print x / 0.1
 
 # ## Watch out for integer divisions. In Python 2, it _truncates down_ to an integer.
 
-# In[ ]:
+# In[16]:
 
 print 10 / 3    # 3.33... (in Python 3)
 
 
-# In[ ]:
+# In[17]:
 
 print -10 / 3   # -3.33... (in Python 3)
 
 
 # A solution: use floating point numbers
 
-# In[ ]:
+# In[18]:
 
 print 10.0 / 3.0
 
@@ -224,16 +230,27 @@ print 10.0 / 3.0
 
 # * What is the remainder of 5 divided by 2?
 
-# In[ ]:
+# In[71]:
 
+# an answer
+dividend = 5
+divisor = 2
 
+quotient = dividend // divisor
+remainder = dividend - (quotient * divisor)
+
+print "remainder:", remainder
+
+# another answer
+print "remainder:", dividend % divisor
 
 
 # * What is the remainder of 2837465 divided by 2834?
 
-# In[ ]:
+# In[72]:
 
-
+# an answer
+print 2837465 % 2834
 
 
 # ## String Literals
@@ -241,7 +258,7 @@ print 10.0 / 3.0
 # * A string is a sequence of characters.
 # * Either double(`"`) or single(`'`) quotes for creating string literals.
 
-# In[ ]:
+# In[19]:
 
 name = "Changarilla"
 file_name = 'workshop.tex'
@@ -249,7 +266,7 @@ file_name = 'workshop.tex'
 
 # * Triple-quoted strings can span multiple lines.
 
-# In[ ]:
+# In[20]:
 
 starwars = """
 A long time ago is a galaxy far, far away
@@ -270,7 +287,7 @@ print ord(last_char), ord("\n")
 
 # * Strings are immutable.
 
-# In[ ]:
+# In[21]:
 
 s = "abcde"
 s[0] = "x"
@@ -278,7 +295,7 @@ s[0] = "x"
 
 # * We can always create a new string instead.
 
-# In[ ]:
+# In[73]:
 
 t = "x" + s[1:]
 print t
@@ -286,20 +303,20 @@ print t
 
 # * Many functions and methods are available.
 
-# In[ ]:
+# In[74]:
 
 s = "abcde"
 print s + s   # concatenation
 
 
-# In[ ]:
+# In[75]:
 
 print len(s)
 
 
 # * Index is 0-based. `find` returns -1 if not found.
 
-# In[ ]:
+# In[76]:
 
 print s.find("c")
 
@@ -308,18 +325,18 @@ print s.find("c")
 
 # A few more string methods.
 
-# In[ ]:
+# In[77]:
 
 s = "abcde"
 print s.upper(), "XYZ".lower()
 
 
-# In[ ]:
+# In[78]:
 
 print "     xxx  yy  ".strip()
 
 
-# In[ ]:
+# In[79]:
 
 print "a,bb,ccc".split(",")
 
@@ -340,24 +357,24 @@ print "a,bb,ccc".split(",")
 
 # * `format()` method
 
-# In[ ]:
+# In[80]:
 
 print "The answer is {0}".format(21)
 
 
-# In[ ]:
+# In[81]:
 
 print "The real answer is {0:6.4f}".format(21.2345678)
 
 
 # * formatting operator
 
-# In[ ]:
+# In[82]:
 
 print "The answer is %d" % 21
 
 
-# In[ ]:
+# In[83]:
 
 print "The real answer is %6.4f" % 21.2345678
 
@@ -370,16 +387,21 @@ print "The real answer is %6.4f" % 21.2345678
 # Hello, Timon!<br/>
 # Hello, Pumbaa!
 
-# In[ ]:
+# In[129]:
 
+# an answer
+friends = ["Simba", "Timon", "Pumbaa"]
+hello_template = "Hello, %s!"
 
+for friend in friends:
+    print hello_template % friend
 
 
 # ## Raw Strings
 
 # Within a string literal, escape sequences start with a backslash.
 
-# In[ ]:
+# In[84]:
 
 a_string = 'It\'s a great day\nto learn \\Python\\. \n 1\t 2\t 3'
 print a_string
@@ -387,7 +409,7 @@ print a_string
 
 # A _raw_ string literal starts with the prefix r. In a raw string, the backslash is not special. It is great for writing reg ex patterns.
 
-# In[ ]:
+# In[85]:
 
 import re
 
@@ -401,7 +423,7 @@ if m is not None:
 
 # You can create Unicode strings using the u prefix and slash-u escape sequences for letters that are difficult to enter (\u followed by a hexadecimal value, xxxx).
 
-# In[ ]:
+# In[86]:
 
 a_string = u"Euro \u20AC"
 print a_string, len(a_string)
@@ -424,7 +446,7 @@ print a_string, len(a_string)
 
 # ## A Unicode example:
 
-# In[ ]:
+# In[87]:
 
 ustr = u"Euro \u20AC"   # Euro symbol
 print ustr
@@ -432,14 +454,14 @@ print ustr
 
 # Python's default encoding codec is 'ascii'.
 
-# In[ ]:
+# In[88]:
 
 print ustr.encode()
 
 
 # Encoding to UTF-8 works fine. This takes 8 bytes: 5 one-byte's and 1 three-byte.
 
-# In[ ]:
+# In[89]:
 
 utf_8 = ustr.encode("UTF-8")
 print type(utf_8), len(utf_8)
@@ -447,7 +469,7 @@ print type(utf_8), len(utf_8)
 
 # Now suppose that we want to decode to ascii, ignoring non-ascii characters.
 
-# In[ ]:
+# In[90]:
 
 print utf_8.decode("ascii", "ignore")
 
@@ -456,21 +478,21 @@ print utf_8.decode("ascii", "ignore")
 
 # Is a place-holder, like NULL in other languages.
 
-# In[ ]:
+# In[91]:
 
 x = None
 
 
 # None is s a universal object, i.e, there is only one None.
 
-# In[ ]:
+# In[92]:
 
 print None is None
 
 
 # * None is evaluated as False.
 
-# In[ ]:
+# In[93]:
 
 x = None
 if x:
@@ -479,7 +501,7 @@ if x:
 
 # None, however, is distinct from others which are False.
 
-# In[ ]:
+# In[94]:
 
 print None is 0, None is False, None is []
 
@@ -489,7 +511,7 @@ print None is 0, None is False, None is []
 # * Basic code data types: int, float, and str
 # * "Python is dynamically, but _strongly_ typed."
 
-# In[ ]:
+# In[95]:
 
 n = 1.0
 print n + "99"
@@ -497,14 +519,14 @@ print n + "99"
 
 # * Use `int()` or `float()` to go from str to numeric
 
-# In[ ]:
+# In[96]:
 
 print n + float("99")
 
 
 # * str() returns the string representation of the given object.
 
-# In[ ]:
+# In[97]:
 
 n = 1.0
 print str(n) + "99"
@@ -526,7 +548,7 @@ print str(n) + "99"
 
 # * Power operator binds more tightly than unary operators on the left.
 
-# In[ ]:
+# In[98]:
 
 a = -2 ** 2
 print a
@@ -534,14 +556,14 @@ print a
 
 # * solution: parenthesize the base
 
-# In[ ]:
+# In[99]:
 
 print (-2)**2
 
 
 # * Comparisons can be chained
 
-# In[ ]:
+# In[100]:
 
 x = 1
 y = 3
@@ -556,7 +578,7 @@ x < y and y <= z
 
 # * Logical operators (and, or) short-circuit evaluation and return an _operand_.
 
-# In[ ]:
+# In[101]:
 
 print 3 or 2
 
@@ -564,42 +586,57 @@ print 3 or 2
 # ## Quiz
 
 # * Demographic and Health Surveys (DHS) Century Month Code (CMC)<cite data-cite="MEASUREDHSPlus">[4,p5]</cite> provides and easy way working with year and month.
-# * The CMC is an integer representing a month, taking the value of 1 in January 1900, 2 in February 1900, ..., 13 in January 1901, etc. The CMC in February 2011 is 1333.
+# * The CMC is an integer representing a month, taking the value of 1 in January 1900, 2 in February 1900, ..., 13 in January 1901, etc. The CMC in February 2011 is 1334.
 # * What is the CMC for this month, i.e., May, 2015?
 
-# In[ ]:
+# In[138]:
 
+# an answer
+month = 5
+year = 2015
+cmc = 12 * (year - 1900) + month
 
+print "cmc for year(%d) month(%d) is: %d" % (year, month, cmc)
 
 
 # * What is the month (and year) of CMC 1000?
 
-# In[ ]:
+# In[137]:
 
+# an answer
+cmc = 1000
+year = 1900 + (1000 // 12)
+month = 1000 % 12
 
+print "cmc(%d) is year(%d) and month(%d)" % (cmc, year, month)
 
 
 # ## Quiz
 
 # * According to U.S. National Debt Clock, the outstanding public debt, as of a day in 2012, was a big number:
 
-# In[ ]:
+# In[102]:
 
 debt = 17234623718339.96
 
 
 # * Count how many times the degit 3 appears in the number. (Hint: create a string variable and use the `count()` method of the string type.)
 
-# In[ ]:
+# In[139]:
 
-
+# an answer
+str_debt = "17234623718339.96"
+print str_debt.count("3")
 
 
 # * (tricky) It feels rather silly to rewrite the value as a string. Can you think of a way to _convert_ the number into a string?
 
-# In[ ]:
+# In[141]:
 
-
+# an answer
+debt = 17234623718339.96
+str_debt = "%20.2f" % debt  # simply str(debt) may not get all the digits
+print str_debt.count("3")
 
 
 # ## Flow Control
@@ -613,7 +650,7 @@ debt = 17234623718339.96
 
 # * If statement is used for conditional execution.
 
-# In[ ]:
+# In[103]:
 
 x = 4
 
@@ -625,7 +662,7 @@ else:
 
 # * Only one suite (block of statements) under a True conditional expression is executed.
 
-# In[ ]:
+# In[104]:
 
 me = "rock"
 wins = 0
@@ -648,7 +685,7 @@ else:
 # * If, while, and for are _compound_ statements, which have one or more _clauses_. A clause, in turn, consists of a _header_ that ends with a colon and a _suite_.
 # * A suite, a block of statements, is identified by _indentation_.
 
-# In[ ]:
+# In[105]:
 
 a = 1                      # 1 
 if a > 0:                  # 2
@@ -664,7 +701,7 @@ print "done"               # 6
 
 # The following raises an `IndentationError`.
 
-# In[ ]:
+# In[106]:
 
 print "another"         # 1
                         # 2
@@ -674,7 +711,7 @@ desc = "a is positive"  # 4
 
 # Below is syntactically OK, just not so stylish.
 
-# In[ ]:
+# In[107]:
 
 if a > 0:               # 1
         desc = "a > 0"  # 2
@@ -694,24 +731,43 @@ else:                   # 4
 
 # Given an integer `n`, print out "Even" if `n` is an even number or "Odd" if `n` is an odd number. (Hint: (`n % 2 == 0`) is `true` when `n` is an even number.)
 
-# In[ ]:
+# In[142]:
 
-
+# an answer
+n = 1
+if (n % 2) == 0:
+    print "Even"
+else:
+    print "Odd"
 
 
 # Given an integer `n`, print out "Even" if `n` is an even number except zero or "Odd" if `n` is an odd number. When `n` is eiqual to zero (0), then print out "Even and zero", instead of just "Even".
 
-# In[ ]:
+# In[147]:
 
-n = 3
-("Odd" if (n % 2) else "Even") + ("" if n else " and zero")
+# an answer
+n = 0
+
+is_even = (n % 2) == 0
+is_zero = n == 0
+
+if is_even:
+    print "Even",           # the trailing comma supresses the newline
+    if is_zero:
+        print "and zero"
+else:
+    print "Odd"
+
+
+# another answer -- using the if else expressions, not if else statements
+print ("Odd" if (n % 2) else "Even") + ("" if n else " and zero")
 
 
 # ## While
 
 # * Repeats a block of statements as long as the condition remains True.
 
-# In[ ]:
+# In[109]:
 
 total = 0
 n = 0
@@ -728,7 +784,7 @@ while n < 5:
 
 # * `for` is used to iterate over a sequence.
 
-# In[ ]:
+# In[110]:
 
 days = ["Sunday", "Monday", "Tuesday", "Wednesday", 
         "Thursday", "Friday", "Saturday"]
@@ -742,13 +798,13 @@ for day in days:
 
 # * Another example:
 
-# In[ ]:
+# In[111]:
 
 numbers = range(5)
 print numbers
 
 
-# In[ ]:
+# In[112]:
 
 for n in numbers:
     print n,
@@ -764,23 +820,45 @@ for n in numbers:
 # 
 # (Hint: it is easy to get an infinite loop. If you don't see output and kernel keeps running (indicated by the filled circle under the Python logo on the top right corner of this page), then interrupt the kernel by clicking on the menu Kernel > Interrupt and fix the error.)
 
-# In[ ]:
+# In[149]:
 
+# an answer
+n = 10
 
+i = 1
+total = 0
+
+while i <= n:
+    total += i
+    i += 1
+
+print "total: %d" % total
+
+# another answer
+n = 10
+total = 0
+
+for i in range(10 + 1): # range returns [0, 1, ..., 10]
+    total += i
+
+print "total: %d" % total
 
 
 # You may have noticed that it is rather *silly* to use a loop to calculate this sum. Calculate the sum of integers from 1 to `n` (`n` >= 1) directly without a loop. (Hint: the sum is also known as the [triangular number](http://en.wikipedia.org/wiki/Triangular_number).)
 
-# In[ ]:
+# In[151]:
 
-
+# an answer
+n = 10
+t = n * (n + 1) / 2
+print "triangular number (%d) = %d" % (n, t)
 
 
 # ## File I/O
 
 # * The built-in function, `open()`, returns a file type object, unless there is an error opening the file.
 
-# In[ ]:
+# In[152]:
 
 in_file = open("code/yourfile.txt", "r")
 out_file = open("code/myfile.txt", "w")
@@ -788,7 +866,7 @@ out_file = open("code/myfile.txt", "w")
 
 # * Once we get the file type object, then use its methods to read from, write to, or close a file.
 
-# In[ ]:
+# In[153]:
 
 content = in_file.read()
 
@@ -802,7 +880,7 @@ out_file.close()
 
 # * with ensures that the file is closed when done.
 
-# In[ ]:
+# In[154]:
 
 with open("code/lorem.txt", "r") as f:
     for line in f:
@@ -811,7 +889,7 @@ with open("code/lorem.txt", "r") as f:
 
 # * Creating a file and writing three lines.
 
-# In[ ]:
+# In[155]:
 
 with open("code/small.txt", "w") as f:
     f.write("first\n")
@@ -821,7 +899,7 @@ with open("code/small.txt", "w") as f:
 
 # * Read line inclues the newline character.
 
-# In[ ]:
+# In[156]:
 
 with open("code/small.txt", "r") as f:
     for line in f:
@@ -832,7 +910,7 @@ with open("code/small.txt", "r") as f:
 
 # * Defined with `def` and called by name followed by `()`.
 
-# In[ ]:
+# In[157]:
 
 def the_answer():
     return 42
@@ -842,7 +920,7 @@ print the_answer()
 
 # * Argument(s) can be passed.
 
-# In[ ]:
+# In[119]:
 
 def shout(what):
     print what.upper() + "!"
@@ -852,7 +930,7 @@ shout("hello")
 
 # * If the function returns nothing, then it returns None.
 
-# In[ ]:
+# In[158]:
 
 def shout(what):
     print what.upper() + "!"
@@ -863,7 +941,7 @@ print r
 
 # ## CMC again
 
-# In[ ]:
+# In[159]:
 
 def cmc(year, month):
     ''' returns DHS Century Month Code '''   # doc string
@@ -887,23 +965,66 @@ print cmc(2014, 15)
 
 # Write a function `odd(n)` which returns `true` if given the number is odd (Hint: recall the remainder operator `%`.) or `false` otherwise.
 
-# In[ ]:
+# In[162]:
 
+# an answer
+def odd(n):
+    is_odd = (n % 2) == 1
+    if is_odd:
+        return True
+    else:
+        return False
+    
+# test
+print odd(0), odd(1)  # should be False
 
+# another answer
+def odd(n):
+    return ((n % 2) == 1)
+
+# test
+print odd(0), odd(1)
 
 
 # Write a function, `triangular(n)`, which returns the triangular number `n`, that is the sum of integers from 1 to the given number, `n`. For example, `triangular(3)` should return 6 and `triangular(10)` should return 55.
 
-# In[ ]:
+# In[165]:
 
+# an answer
+def triangular(n):
+    total = 0
+    for i in range(n + 1):
+        total += i
+    return total
 
+# check
+print triangular(3), triangular(10)
+
+# another answer
+def triangular(n):
+    return (n * (n + 1)) / 2
+
+# check
+print triangular(3), triangular(10)
 
 
 # (hard) Print out the first 20 odd triangular numbers. (Hint. [OEIS A014493](http://oeis.org/A014493))
 
-# In[ ]:
+# In[169]:
 
+# an answer
+def triangular(n):
+    return (n * (n + 1)) / 2
 
+i = 1
+count = 1
+while count <= 20: 
+    t = triangular(i)
+    is_odd = (t % 2) == 1
+    if is_odd:
+        print t,
+        count += 1
+    i += 1
 
 
 # ## Local and Global Variables
@@ -912,7 +1033,7 @@ print cmc(2014, 15)
 # 
 # * A new variable is _local_, and independent of the global variable with the same name, if any.
 
-# In[ ]:
+# In[122]:
 
 x = 1     # global
 
@@ -926,7 +1047,7 @@ print x
 # * Both local and global variables can be read.
 # * Global variables can be written to once _declared_ so.
 
-# In[ ]:
+# In[123]:
 
 x = 1
 
@@ -942,16 +1063,30 @@ print x
 
 # * Wirte a function that returns Body Mass Index (BMI) of an adult given weight in kilograms and height in meters. (Hint: BMI = weight(kg) / (height(m) squared). For instance, if a person is 70kg and 1.80m, then BMI is about 21.6)
 
-# In[ ]:
+# In[171]:
 
+# an answer
+kg = 70
+m = 1.80
 
+def bmi(kg, m):
+    return float(kg) / (m ** 2)
+
+print bmi(kg, m)
 
 
 # * Re-write the bmi function so that it accepts height in feet and inches, and the weight in pounds. (Hint. Make foot, inch, and pound arguments. Convert them into local variables, kg and m, before calculating bmi to return.)
 
-# In[ ]:
+# In[173]:
 
+# an answer
+def bmi(foot, inch, pound):
+    kg = 0.453592 * pound
+    m = 0.0254 * (12 * foot + inch)
+    return kg / (m ** 2)
 
+# check
+print bmi(5, 11, 180)  # should be around 25.1
 
 
 # ## Importing a module
@@ -960,7 +1095,7 @@ print x
 # * Via the module object, you get access to its variables, functions, classes, ...
 # * We've already seen an example of importing a standard regular expression module:
 
-# In[ ]:
+# In[124]:
 
 import re
 
@@ -974,7 +1109,7 @@ if m is not None:
 
 # There are many standard modules that come already installed, and be ready to be imported.
 
-# In[ ]:
+# In[125]:
 
 import math
 
@@ -984,7 +1119,7 @@ print "square root of 9.0 is {0:.2f}".format(s)
 
 # * You can selectively import as well.
 
-# In[ ]:
+# In[126]:
 
 from math import sqrt
 
@@ -993,7 +1128,7 @@ print sqrt(9.0)
 
 # * You can import your own Python script file (.py) the same way.
 
-# In[ ]:
+# In[127]:
 
 import sys
 
@@ -1012,23 +1147,58 @@ hello.main()
 # * Obesity: 30 or greater
 # For instance, the function should return a string "Normal weight", when it is called with an argument of, say 20. (Hint: use conditional statements, i.e., if ... elif ...)
 
-# In[ ]:
+# In[176]:
 
-
+# an answer
+def bmi_category(bmi):
+    if bmi < 18.5:
+        return "Underweight"
+    elif bmi < 25.0:
+        return "Normal weight"
+    elif bmi < 30.0:
+        return "Overweight"
+    else:
+        return "Obesity"
+    
+# test
+print bmi_category(20)
 
 
 # * Print out a BMI table showing several lines of a pair: a BMI value and its category. BMI value may start at 15 and go up by 3 up to 36. (Hint: use a loop.)
 
-# In[ ]:
+# In[177]:
 
-
+# an answer
+def bmi_category(bmi):
+    if bmi < 18.5:
+        return "Underweight"
+    elif bmi < 25.0:
+        return "Normal weight"
+    elif bmi < 30.0:
+        return "Overweight"
+    else:
+        return "Obesity"
+    
+for bmi in range(15, 36 + 1, 3):
+    print "%3.0f %s" % (bmi, bmi_category(bmi))
 
 
 # ## Quiz
 
 # * Create a comma-separated values (.csv) file of the BMI table.
 
-# In[ ]:
+# In[178]:
+
+# an answer
+def bmi_category(bmi):
+    if bmi < 18.5:
+        return "Underweight"
+    elif bmi < 25.0:
+        return "Normal weight"
+    elif bmi < 30.0:
+        return "Overweight"
+    else:
+        return "Obesity"
 
 import csv
 
@@ -1036,7 +1206,7 @@ with open("code/test.csv", "wb") as f:
     my_writer = csv.writer(f)
     bmi = 15
     while bmi < 36:
-        cat = BMI_category(bmi)
+        cat = bmi_category(bmi)
         my_writer.writerow([bmi, cat])
         bmi += 3
 

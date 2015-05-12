@@ -169,18 +169,18 @@ len([0,1,2,]) == 3
     (Hint: Create a new empty list. Loop over the
      old one appending only odd numbers into the new one.
      Return the new one.)
-% \item<2-> An answer.
-% \begin{lstlisting}
-% def only_odd(a_list):
-%     L = []
-%     for el in a_list:
-%         if el % 2 == 1:
-%             L.append(el)
-%     return L
-% 
-% print only_odd([0, 1, 2, 3, 4])
-% # [1, 3]
-% \end{lstlisting}
+\item<2-> An answer.
+\begin{lstlisting}
+def only_odd(a_list):
+    L = []
+    for el in a_list:
+        if el % 2 == 1:
+            L.append(el)
+    return L
+
+print only_odd([0, 1, 2, 3, 4])
+# [1, 3]
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -192,9 +192,22 @@ len([0,1,2,]) == 3
     This time, however, do not return a new list.
     Just modify the given list so that it has only
     the odd numbers.
-
     (Hint: \lstinline{del L[0]} removes
     the first element of the list, \lstinline{L})
+\begin{lstlisting}
+def odd_only(a_list):
+    i = 0
+    length = len(a_list)
+    while i < length:
+        if (n % 2) == 0:
+            del a_list[i]
+            i -= 1
+            length -= 1
+        i += 1
+L = [0, 1, 2, 3, 4]  # check
+odd_only(L)
+print L
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -253,15 +266,15 @@ L = [[1, 2], [0, 2, 3], [0, 1], [1, 4, 5], [3, 5], [3]]
       Calculate the average number of friends
       the children have. (Hint: \lstinline{len()}
       returns the list size.)
-% \item<2-> An answer:
-% \begin{lstlisting}
-% total = 0.0            # make total a float type
-% for el in L:
-%     total += len(el)
-% avg = total / len(L)
-% print avg
-% # 2.1666
-% \end{lstlisting}
+\item<2-> An answer:
+\begin{lstlisting}
+total = 0.0            # make total a float type
+for el in L:
+    total += len(el)
+avg = total / len(L)
+print avg
+# 2.1666
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -279,6 +292,14 @@ L = [[1, 2], [0, 2, 3], [0, 1], [1, 4, 5], [3, 5], [3]]
 \begin{lstlisting}
 def mutual(a_list, ego, alter):
     return alter in a_list[ego] and ego in a_list[alter]
+
+def all_reciprocated(a_list):
+    for ego in range(len(a_list)):
+        alters = a_list[ego]
+        for alter in alters:
+            if not mutual(a_list, ego, alter):
+                return False 
+    return True
 \end{lstlisting}
 \end{itemize}
 \end{frame}
@@ -438,14 +459,14 @@ print mary1["cr"]                  # 800
       Given this dictionary, say \lstinline{D},
       a lookup, \lstinline{D[680]["cr"]}
       should be evaluated to \lstinline{93}.
-% \item<2-> An answer.
-% \begin{lstlisting}
-% D = {700: {"cr": 95, "m": 93, "w": 96},
-%      690: {"cr": 94, "m": 92, "w": 95},
-%      680: {"cr": 93, "m": 90, "w": 94}} 
-% 
-% print D[680]["cr"]      # 93
-% \end{lstlisting}
+\item<2-> An answer.
+\begin{lstlisting}
+D = {700: {"cr": 95, "m": 93, "w": 96},
+     690: {"cr": 94, "m": 92, "w": 95},
+     680: {"cr": 93, "m": 90, "w": 94}} 
+
+print D[680]["cr"]      # 93
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -461,7 +482,9 @@ print mary1["cr"]                  # 800
  
      (Hint: Start with a dictionary below.):
 \begin{lstlisting}
-DD = {"cr": {}, "m": {}, "w": {}}
+DD = {"cr": {700: 95, 690: 94, 680: 93}, 
+      "m": {700: 93, 690: 92, 680: 90},
+      "w": {700: 96, 690: 95, 680: 94}}
 \end{lstlisting} 
 \end{itemize}
 \end{frame}
@@ -593,11 +616,15 @@ print your_account.balance               # 110
 \begin{lstlisting}[escapechar=\%]
 class Person:
     def __init__(self, first, last, year):
-        pass
+        self.first_name = first_name
+        self.last_name = last_name
+        self.birth_year = birth_year
+
     def full_name(self):
-        pass
+        return self.first_name + " " + self.last_name
+
     def age(self, current_year):
-        pass
+        return current_year - self.birth_year
 
 # check
 mr_park = Person("Jae%{\color{string}--}%sang", "Park", 1977)
@@ -862,11 +889,11 @@ for url in L:
 \end{frame}
 
 % -----------------------------------------------
-\begin{frame}%[allowframebreaks]
-  \frametitle{References}
-  \bibliographystyle{acm}
-  \scriptsize
-  \bibliography{references}
-\end{frame}
+% \begin{frame}%[allowframebreaks]
+%   \frametitle{References}
+%   \bibliographystyle{acm}
+%   \scriptsize
+%   \bibliography{references}
+% \end{frame}
 
 \end{document}

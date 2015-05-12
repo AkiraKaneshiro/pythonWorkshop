@@ -44,7 +44,7 @@ plt.scatter(x, y)
 # 
 # NumPy provides the _ndarray_ object, which implements an efficient homogeneous multi-dimensional array type. 
 
-# In[14]:
+# In[1]:
 
 import numpy as np
 
@@ -60,7 +60,7 @@ D = np.dot(A, B)
 
 # See how fast it finds the maximum among a 1 million cells.
 
-# In[15]:
+# In[2]:
 
 np.random.seed(1234)
 
@@ -75,7 +75,7 @@ get_ipython().magic(u'time max(M2)')
 
 # NumPy has many built-in functions, for instance, Singular Value Decomposition can be as simple as:
 
-# In[16]:
+# In[3]:
 
 a = np.random.randn(9, 6)
 U, s, V = np.linalg.svd(a)
@@ -97,7 +97,7 @@ np.allclose(a, aa)
 # 
 # The minimum value of this function is 0 which is achived when $x_i = 1$.
 
-# In[17]:
+# In[4]:
 
 import numpy as np
 from scipy.optimize import minimize

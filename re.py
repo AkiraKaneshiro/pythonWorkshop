@@ -147,12 +147,12 @@ else:
 
 # ## Quiz. Write a regex pattern that matches 9:00 am
 
-# In[7]:
+# In[20]:
 
 import re
 
 text = "This is my phone number, 555-1234. Call me at 9:00 am!"
-pattern = r"" # replace this with your pattern
+pattern = r"\d:\d\d am" # an answer
 
 match = re.search(pattern, text)
 
@@ -385,7 +385,7 @@ else:
 # 
 # 
 
-# In[18]:
+# In[21]:
 
 import re
 
@@ -408,9 +408,11 @@ and forgot all about the frog.
 """
 
 
-# In[ ]:
+# In[22]:
 
+# an answer
 
+pattern = r"\[a-zA-Z]+ly"
 
 
 # ## Quiz. Find all the adverbs in the text
@@ -418,9 +420,11 @@ and forgot all about the frog.
 # Hint: The function `re.findall(pattern, text)` returns all the matching sub-text as a list.
 # 
 
-# In[ ]:
+# In[24]:
 
-
+# an answer
+import re
+print re.findall(r"[a-zA-Z]+ly", text)
 
 
 # ## Quiz. Validate a poker hand
@@ -433,19 +437,36 @@ and forgot all about the frog.
 # 
 # Write a pattern to validate a hand. It does not have to be very thorough. Just to pass the test cases shown below.
 
-# In[19]:
+# In[30]:
 
 import re
 
-pattern = r""  # replace this with your pattern
+pattern = r"^[akqjt2-9]{5}$"  # an answer
+
+def check(match):
+    print "match == None" if match is None else "match.group() == \"%s\"" % match.group()
+
 
 match = re.search(pattern, "245")         # match == None
+check(match)
+
 match = re.search(pattern, "a 334")       # match == None
+check(match)
+
 match = re.search(pattern, "akt5q")       # match.group() == "akt5q"
+check(match)
+
 match = re.search(pattern, "akt5e")       # match == None
+check(match)
+
 match = re.search(pattern, "727ak")       # match.group() == "727ak"
+check(match)
+
 match = re.search(pattern, " akt34")      # match == None
+check(match)
+
 match = re.search(pattern, "23456  ")     # match == None
+check(match)
 
 
 # ## Learning Resources

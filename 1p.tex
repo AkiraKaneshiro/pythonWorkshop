@@ -255,20 +255,24 @@ print 10.0 / 3.0
 \frametitle{Quiz}
 \begin{itemize}
 \item What is the remainder of 5 divided by 2?
-%ANS% \item An answer:
-%ANS% \begin{lstlisting}[escapechar=\%]
-%ANS% dividend = 5
-%ANS% divisor = 2
-%ANS%
-%ANS% quotient = dividend // divisor
-%ANS% remainder = dividend - (quotient * divisor)
-%ANS% print remainder
-%ANS% \end{lstlisting}
+\item An answer:
+\begin{lstlisting}[escapechar=\%]
+# an answer
+dividend = 5
+divisor = 2
+
+quotient = dividend // divisor
+remainder = dividend - (quotient * divisor)
+print "remainder:", remainder
+
+# another answer
+print "remainder:", dividend % divisor
+\end{lstlisting}
 \item What is the remainder of 2837465 divided by 2834?
-%ANS% \item An answer using the modulus operator (\%):
-%ANS% \begin{lstlisting}[escapechar=\%]
-%ANS% print (2837465 % 2834)
-%ANS% \end{lstlisting}
+\item An answer using the modulus operator (\%):
+\begin{lstlisting}
+print 2837465 % 2834
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -399,18 +403,14 @@ Hello, Simba!
 Hello, Timon!
 Hello, Pumbaa!
 \end{lstlisting}
-%ANS% \item An answer using the \lstinline{format()} method:
-%ANS% \begin{lstlisting}[escapechar=\%]
-%ANS% print "Hello, {0:s}!".format("Simba")
-%ANS% print "Hello, {0:s}!".format("Timon")
-%ANS% print "Hello, {0:s}!".format("Pumbaa")
-%ANS% \end{lstlisting}
-%ANS% \item An answer using the format operator (\%):
-%ANS% \begin{lstlisting}[escapechar=\%]
-%ANS% print "Hello, %s!" % ("Simba")
-%ANS% print "Hello, %s!" % ("Timon")
-%ANS% print "Hello, %s!" % ("Pumbaa")
-%ANS% \end{lstlisting}
+\item An answer:
+\begin{lstlisting}
+friends = ["Simba", "Timon", "Pumbaa"]
+hello_template = "Hello, %s!"
+
+for friend in friends:
+    print hello_template % friend
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -625,19 +625,22 @@ The CMC is
 an integer representing a month, taking
 the value of 1 in January 1900, 2 in
 February 1900, \ldots, 13 in January 1901, etc.
-The CMC in February 2011 is 1333.
+The CMC in February 2011 is 1334.
 \\~\\
 What is the CMC for this month, i.e., January, 2014?
-%ANS% \item<2-> An answer:
-%ANS% \begin{lstlisting}[escapechar=\%]
-%ANS% year = 2014
-%ANS% month = 1
-%ANS% print "CMC", (year %\--% 1900) * 12 + month
-%ANS% # CMC 1369
-%ANS% \end{lstlisting}
+\item<2-> An answer:
+\begin{lstlisting}[escapechar=\%]
+month = 5
+year = 2015
+cmc = 12 * (year %\--% 1900) + month
+print cmc for year(%\%%d) month(%\%%d) is: %\%%d" %\%% (year, month, cmc)
+%\#% cmc for year(2015) month(5) is: 1385
+\end{lstlisting}
 \item<3-> What is the month (and year) of CMC 1000? 
-%ANS% cmc = 1000
-%ANS% print (1900 + cmc // 12), (cmc % 12)
+\begin{lstlisting}[escapechar=\%]
+print "cmc(%\%%d) is year(%\%%d) and month(%\%%d)" %\%% (1000,
+    (1900 + (1000 // 12)), (1000 %\%% 12))
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -657,21 +660,21 @@ debt = 17234623718339.96
       (Hint: create a string variable and use
        the \lstinline{count()} method of
        the string type.)  
-%ANS% \item<2-> An answer:
-%ANS% \begin{lstlisting}
-%ANS% sdebt = "17234623718339.96"
-%ANS% print sdebt.count("3")
-%ANS% # 4
-%ANS% \end{lstlisting}
+\item<2-> An answer:
+\begin{lstlisting}
+sdebt = "17234623718339.96"
+print sdebt.count("3")
+# 4
+\end{lstlisting}
 \item<3-> (tricky) It feels rather silly to rewrite the
           value as a string.
           Can you think of a way to \emph{convert}
           the number into a string? 
-%ANS% \item<3-> An answer:
-%ANS% \begin{lstlisting}
-%ANS% print "{0:17.2f}".format(debt).count("3")
-%ANS% # 4
-%ANS% \end{lstlisting}
+\item<3-> An answer:
+\begin{lstlisting}
+print "{0:17.2f}".format(debt).count("3")
+# 4
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -771,28 +774,23 @@ else:                            # OK
 \item Given an integer n, print out "Even" if n is an
     even number or "Odd" if n is an odd number. (Hint:
     (n \% 2 == 0) is true when n is an even number.
-%ANS% \item An answer:
-%ANS% \begin{lstlisting}[escapechar=\%]
-%ANS% n = 3
-%ANS% if (n %% 2 == 0):
-%ANS%     print "Even"
-%ANS% else:
-%ANS%     print "Odd"
-%ANS% \end{lstlisting}
+\item An answer:
+\begin{lstlisting}[escapechar=\%]
+n = 3
+if (n %\%% 2 == 0):
+    print "Even"
+else:
+    print "Odd"
+\end{lstlisting}
 \item Given an integer n, print out "Even" if n is an
     even number except zero or "Odd" if n is an odd number.
     When n is equal to zero (0), then print out "Even and zero",
     instead of just "Even".
-%Ans% \item An answer:
-%ANS% \begin[lstlisting}[escapechar=\%]
-%ANS% n = 3
-%ANS% if (n % 2 == 0 and n == 0):
-%ANS%     print "Even and zero"
-%ANS% elif (n % 2 == 0 and n != 0):
-%ANS%     print "Even"
-%ANS% else:
-%ANS%     print "Odd"
-%ANS% \end{lstlisting}
+\item An answer:
+\begin{lstlisting}[escapechar=\%]
+n = 3  # using the if else expressions, not if else statements
+print ("Odd" if (n%\%% 2) else "Even") + ("" if n else " and zero")
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -886,25 +884,33 @@ for n in numbers:
     under the Python logo on the top right corner of ipython notebook),
     then interrupt the kernel by clicking on the ipython notebook
     menu, Kernel > Interrupt, and fix the error.)
-%ANS% \item An answer:
-%ANS% \begin{lstlisting}[escapechar=\%]
-%ANS% n = 3
-%ANS% i = 1
-%ANS% total = 0
-%ANS% while (i <= n):
-%ANS%    total = total + i
-%ANS%    i = i + 1
-%ANS% print total
-%ANS% \end{lstlisting}
+\item An answer:
+\begin{lstlisting}[escapechar=\%]
+n = 3
+i = 1
+total = 0
+while (i <= n):
+   total = total + i
+   i = i + 1
+print total
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+
+% -----------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Quiz}
+\begin{itemize}
 \item You may have noticed that it is rather silly to use a loop
     to calculate this sum. Calculate the sum of integers from 1
     to n (n >= 1) directly without a loop. (Hint the sum is also
     known as the "triangular number".)
-%Ans% \item An answer:
-%ANS% \begin[lstlisting}[escapechar=\%]
-%ANS% n = 3
-%ANS% print (n * (n + 1)) / 2
-%ANS% \end{lstlisting}
+\item An answer:
+\begin{lstlisting}[escapechar=\%]
+n = 3
+print (n * (n + 1)) / 2
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -1031,27 +1037,24 @@ print cmc(2014, 15)
 \item Write a function odd(n) which returns true if given the
     number is odd or false otherwise. (Hint: Recall the remainder
     operator \%.)
-%ANS% \item An answer:
-%ANS% \begin{lstlisting}[escapechar=\%]
-%ANS% def odd(n):
-%ANS%    return (n % 2 == 0)
-%ANS% \end{lstlisting}
+\begin{lstlisting}[escapechar=\%]
+def odd(n):
+   return (n % 2 == 0)
+\end{lstlisting}
 \item Write a function, triangular(n), which returns the 
     triangular number n, that is the sum of integers from
     1 to the given number, n. For example, triangular(3)
     should return 6 and triangular(10) should return 55.
-%Ans% \item An answer:
-%ANS% \begin[lstlisting}[escapechar=\%]
-%ANS% def triangular(n):
-%ANS%    return (n * (n + 1)) / 2
-%ANS% \end{lstlisting}
+\begin{lstlisting}[escapechar=\%]
+def triangular(n):
+   return (n * (n + 1)) / 2
+\end{lstlisting}
 \item Print out the first 20 odd triangular numbers.
     (Hint: OEIS A014493)
-%Ans% \item An answer:
-%ANS% \begin[lstlisting}[escapechar=\%]
-%ANS% for i in range(1, 21):
-%ANS%    print triangular(i),
-%ANS% \end{lstlisting}
+\begin{lstlisting}[escapechar=\%]
+for i in range(1, 21):
+   print triangular(i),
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -1100,16 +1103,22 @@ print x                  # 2
       For instance, if a person is 70kg and 1.80m,
       then BMI is about 21.6.)
 
-%ANS% \item<2-> An answer.
-%ANS% \begin{lstlisting}
-%ANS% def bmi(kg, m):
-%ANS%     return float(kg) / (m ** 2)
-%ANS% \end{lstlisting}
+\item<2-> An answer.
+\begin{lstlisting}
+def bmi(kg, m):
+    return float(kg) / (m ** 2)
+\end{lstlisting}
 \item<3-> Re-write
     the bmi function so that it accepts height in feet
     and inches, and the weight in pounds. (Hint. Make pound, foot,
     and inch arguments. Convert them into local
     variables, kg and m, before calculating bmi to return.)
+\begin{lstlisting}
+def bmi(foot, inch, pound):
+    kg = 0.453592 * pound
+    m = 0.0254 * (12 * foot + inch)
+    return kg / (m ** 2)
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -1191,11 +1200,32 @@ For instance, the function should return a string
 "Normal weight", when it is called with an argument
 of, say 20. (Hint: use conditional statements 
 i.e., \lstinline{if ... elif ...})
- 
+\begin{lstlisting}
+def bmi_category(bmi):
+    if bmi < 18.5:
+        return "Underweight"
+    elif bmi < 25.0:
+        return "Normal weight"
+    elif bmi < 30.0:
+        return "Overweight"
+    else:
+        return "Obesity"
+\end{lstlisting} 
+\end{itemize}
+\end{frame}
+
+% -----------------------------------------------
+\begin{frame}[fragile]
+\frametitle{Quiz}
+\begin{itemize}
 \item Print out a BMI table showing several lines of
     a pair: a BMI value and its category. BMI value
     may start at 15 and go up by 3 up to 36.
     (Hint: use a loop)
+\begin{lstlisting}
+for bmi in rnage(15, 36 + 1, 3):
+    print "\%3.0f \%s" \% (bmi, bmi_category(bmi))
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
@@ -1211,10 +1241,11 @@ import csv
 
 with open("test.csv", "wb") as f:
     my_writer = csv.writer(f)
-    i = 15
-    while i < 30:
-        my_writer.writerow([i, "yahoo!"])
-        i += 3 
+    bmi = 15
+    while bmi < 36:
+        cat = bmi_category(bmi)
+        my_writer.writerow([bmi, cat])
+        bmi += 3
 \end{lstlisting}
 \end{itemize}
 
